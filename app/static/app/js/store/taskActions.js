@@ -1,5 +1,10 @@
 // api comunicantion functions
 
+const headers = {
+    "Content-Type": "application/json",
+    "X-CSRFToken": Cookies.get('csrftoken')
+}
+
 export async function fetchTasks(){
     return await axios.get('/api/todos/')
 }

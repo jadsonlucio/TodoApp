@@ -4,15 +4,11 @@ var template = `
         <input v-model="title" type="text"/><br>
         <label htmlFor="">Texto</label>
         <textarea v-model="text" name="" id="" cols="30" rows="10"></textarea><br>
-        <button class="btn" v-on:submit.prevent="onSubmit">Adicionar todo</button>
+        <button class="btn" v-on:submit.prevent="onSubmit">Adicionar task</button>
     </form>
 `;
-const headers = {
-    "Content-Type": "application/json",
-    "X-CSRFToken": Cookies.get('csrftoken')
-}
 
-export const todocad = Vue.component('todo-cad', {
+export const taskcad = Vue.component('task-cad', {
     template: template,
     delimiters: ['{{', '}}'],
     data: function() {
@@ -25,14 +21,12 @@ export const todocad = Vue.component('todo-cad', {
                 title: self.title,
                 text: self.text
             }
-            axios.post("/api/todos/", body, {headers:headers})
+            this.$store.dispatch("addTask", body)
             .then(function (response) {
-                self.$emit('cad_todos', response.data)
-                self.title = ""
-                self.text = ""
+                console.log(`task cadastrada: ${body}`)
             })
             .catch(function (error) {
-                console.log(error);
+                alert(JSON.stringify(error));
             });
         }
     }

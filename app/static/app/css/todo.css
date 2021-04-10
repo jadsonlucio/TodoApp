@@ -2,7 +2,15 @@
     border-radius: 25px;
     border: 3px solid transparent;
     box-sizing: border-box;
-    background-clip:padding-box;;
+    background-clip: padding-box;;
+}
+
+.task{
+    box-shadow: 5px 5px 10px #4b4848;
+    border-radius: 25px;
+    border: 3px solid transparent;
+    box-sizing: border-box;
+    background-clip: padding-box;;
 }
 
 .box{

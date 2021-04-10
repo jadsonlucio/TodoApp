@@ -1,39 +1,29 @@
-import * as component from "./todo.js";
-import * as tododa from "./todocad.js"
-import * as tasklist from "./TaskList.js"
-import store from "./store/index.js"
+import * as component from "./task.js";
+import * as tododa from "./taskCad.js"
+import * as tasklist from "./taskList.js"
+import store from './store/store.js'
+
+//Vue.use(storePlugin)
 
 var app = new Vue({
     el: '#app',
+    store,
     delimiters: ['${', '}'],
     data: {
-        todos: []
+    },
+    computed: {
+        tasks: function(){
+            return this.$store.state.tasks;
+        }
     },
     methods: {
-        fetch_data: function() {
-            var self = this;
-            axios.get('/api/todos/')
-            .then(function (response) {
-                self.todos = response.data;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        },
-        cad_todo_handler: function(todo){
-            this.todos.push(todo)
-        },
-        delete_todo: function(todo){
-            const index = this.todos.indexOf(todo)
-            this.todos.splice(index, 1)
-        },
-        get_todos: function(status){
-            return this.todos.filter((todo) => {
-                return todo.status == status
-            })
+        get_tasks(status){
+            return this.tasks.filter((task) => {
+                return task.status == status;
+            }) 
         }
     },
     created: function () {
-        this.fetch_data()
-      }
-}, store)
+        this.$store.dispatch("fetchTasks");
+    }
+})
