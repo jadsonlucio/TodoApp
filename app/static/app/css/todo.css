@@ -1,0 +1,28 @@
+.task-list{
+    border-radius: 25px;
+    border: 3px solid transparent;
+    box-sizing: border-box;
+    background-clip:padding-box;;
+}
+
+.box{
+    overflow-y: scroll;
+    height:80vh;
+  }
+
+  .box::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* scrollbar track */
+  .box::-webkit-scrollbar-track {
+    background: #eee;
+  }
+  
+  /* scrollbar handle */
+  .box::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #00d2ff;
+    background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+  }
+  
