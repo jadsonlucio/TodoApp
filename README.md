@@ -25,7 +25,7 @@ Funcionalidades implementadas:
 Execute o seguinte comando para clonar o projeto via git:
 
 ```bash
-git clone 
+git clone https://github.com/jadsonlucio/TodoApp
 ```
 
 ## Pré requisitos
